@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Masonry in Chrome</title>
+  <link rel="stylesheet" type="text/css" href="masonry.css">
+  <script src="masonry.js" defer></script>
+  <style>
+    .masonry {
+      display: masonry;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>CSS Masonry in <span class="coloring">Chrome</span> - <i>display: masonry</i> experimental feature</h1>
+  <button id="shuffle" type="button">Shuffle Masonry</button>
+
+  <div class="masonry" id="masonry">
+    <div class="card"><img src="img/sunflower.jpg" alt="sunflower"></div>
+    <div class="card"><img src="img/daffodil.jpg" alt="daffodil"></div>
+    <div class="card"><img src="img/lilies.jpg" alt="lilies"></div>
+    <div class="card"><img src="img/iris.jpg" alt="iris"></div>
+    <div class="card"><img src="img/orchid.jpg" alt="orchid"></div>
+    <div class="card"><img src="img/rose.jpg" alt="rose"></div>
+    <div class="card"><img src="img/lavender.jpg" alt="lavender"></div>
+    <div class="card"><img src="img/tulips.jpg" alt="tulips"></div>
+  </div>
+
+</body>
+
+</html>

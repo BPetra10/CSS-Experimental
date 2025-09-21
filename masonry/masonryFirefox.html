@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Masonry in Firefox</title>
+  <link rel="stylesheet" href="masonry.css">
+  <script src="masonry.js" defer></script>
+  <style>
+    .masonry {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      grid-template-rows: masonry;
+      gap: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>CSS Masonry in <span class="coloring">Firefox</span> - <i>grid-template-rows: masonry</i> experimental feature
+  </h1>
+  <button id="shuffle" type="button">Shuffle Masonry</button>
+
+  <div class="masonry" id="masonry">
+    <div class="card"><img src="img/sunflower.jpg" alt="sunflower"></div>
+    <div class="card"><img src="img/daffodil.jpg" alt="daffodil"></div>
+    <div class="card"><img src="img/lilies.jpg" alt="lilies"></div>
+    <div class="card"><img src="img/iris.jpg" alt="iris"></div>
+    <div class="card"><img src="img/orchid.jpg" alt="orchid"></div>
+    <div class="card"><img src="img/rose.jpg" alt="rose"></div>
+    <div class="card"><img src="img/lavender.jpg" alt="lavender"></div>
+    <div class="card"><img src="img/tulips.jpg" alt="tulips"></div>
+  </div>
+
+</body>
+
+</html>
