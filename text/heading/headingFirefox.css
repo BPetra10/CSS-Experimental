@@ -1,0 +1,23 @@
+:heading
+{
+    text-align: center;
+    color: white;
+    padding: 0.3em 0.5em;
+    margin: 1em 0;
+    border-radius: 10px;
+}
+
+:heading(4n + 1) {
+    background-color: rgb(1, 96, 91);
+    text-shadow: 5px 5px 10px wheat;
+}
+
+:heading(even) {
+ font-style:italic;
+ background-color:purple
+}
+
+:heading(3){
+    background-color: darkblue;
+    text-decoration: underline;
+}

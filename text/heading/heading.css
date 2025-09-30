@@ -1,0 +1,13 @@
+.headStyle {
+    color: crimson;
+    text-align: center;
+    font-weight: bolder;
+}
+
+body {
+    background-color: bisque;
+    font-family: Georgia, serif;
+    margin: 2rem auto;
+    max-width: 40%;
+    line-height: 1.5;
+}

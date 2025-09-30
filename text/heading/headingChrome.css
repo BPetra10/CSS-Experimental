@@ -1,0 +1,22 @@
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    color: white;
+    padding: 0.3em 0.5em;
+    margin: 1em 0;
+    border-radius: 10px;
+}
+
+h1, h5 {
+    background-color: rgb(1, 96, 91);
+    text-shadow: 5px 5px 10px wheat;
+}
+
+h2, h4, h6 {
+    font-style: italic;
+    background-color: purple;
+}
+
+h3 {
+    background-color: darkblue;
+    text-decoration: underline;
+}

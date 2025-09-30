@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Initial Letter Firefox</title>
+    <link rel="stylesheet" href="initialFirefox.css">
+</head>
+
+<body>
+    <h1>Initial letter for Firefox</h1>
+    <h3>Firefox does not support initial letter, so I tried to make someting similar.</h3>
+
+    <p class="capitalize" data-size="1" data-sink="1">
+        <span>T</span>his is when the initial letter is normal in size.
+    </p>
+
+    <p class="capitalize" data-size="4" data-sink="4">
+        <span>T</span><span class="color">his is when the initial letter is 4 line in size, and dropped.</span> Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Sed eleifend turpis id justo mollis, quis semper lacus accumsan. Nullam ac sem
+        purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean interdum
+        purus a quam porttitor, et venenatis lectus commodo. Duis fermentum nunc sed arcu egestas, in sollicitudin ipsum
+        mollis. Aliquam non imperdiet dolor, nec euismod metus. Pellentesque mi lacus, porta a semper quis, rhoncus nec
+        enim. Vivamus viverra mauris ullamcorper vehicula faucibus.
+    </p>
+
+    <p class="capitalize" data-size="4" data-sink="1">
+         <span>T</span><span class="color">his is when the initial letter is 4 line in size, and raised.</span> Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Sed eleifend turpis id justo mollis, quis semper lacus accumsan. Nullam ac sem
+        purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean interdum
+        purus a quam porttitor, et venenatis lectus commodo. Duis fermentum nunc sed arcu egestas, in sollicitudin ipsum
+        mollis. Aliquam non imperdiet dolor, nec euismod metus. Pellentesque mi lacus, porta a semper quis, rhoncus nec
+        enim. Vivamus viverra mauris ullamcorper vehicula faucibus.
+    </p>
+
+    <p class="capitalize" data-size="4" data-sink="2">
+        <span>T</span><span class="color">his initial is 4 line in size, and 2 lines deep.</span> Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Sed eleifend turpis id justo mollis, quis semper lacus accumsan. Nullam ac sem
+        purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean interdum
+        purus a quam porttitor, et venenatis lectus commodo. Duis fermentum nunc sed arcu egestas, in sollicitudin ipsum
+        mollis. Aliquam non imperdiet dolor, nec euismod metus. Pellentesque mi lacus, porta a semper quis, rhoncus nec
+        enim. Vivamus viverra mauris ullamcorper vehicula faucibus.
+    </p>
+
+    <p class="capitalize" data-size="3.5" data-sink="4">
+        <span>T</span><span class="color">his initial is 3.51 line in size, and 4 lines deep.</span> Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Sed eleifend turpis id justo mollis, quis semper lacus accumsan. Nullam ac sem
+        purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean interdum
+        purus a quam porttitor, et venenatis lectus commodo. Duis fermentum nunc sed arcu egestas, in sollicitudin ipsum
+        mollis. Aliquam non imperdiet dolor, nec euismod metus. Pellentesque mi lacus, porta a semper quis, rhoncus nec
+        enim. Vivamus viverra mauris ullamcorper vehicula faucibus.
+    </p>
+</body>
+    <script>
+        function applyCapitalize() {
+            document.querySelectorAll(".capitalize").forEach(p => {
+                const size = parseFloat(p.dataset.size || 1);
+                const sink = parseFloat(p.dataset.sink || size);
+                const span = p.querySelector("span");
+                const lineHeight = parseFloat(getComputedStyle(p).lineHeight);
+
+                const targetHeight = lineHeight * size;
+                const offset = (sink - size) * lineHeight;
+
+                span.style.fontSize = targetHeight + "px";
+                span.style.height = targetHeight + "px";
+                if (sink >= size && sink != 1 && size != 1) {
+                    span.style.lineHeight = targetHeight + "px";
+                    span.style.marginTop = "-5px";
+                }
+                else {
+                    span.style.marginTop = offset + "px";
+                }
+                p.style.paddingTop = offset < 0 ? Math.abs(offset) + "px" : "0px";
+            });
+        }
+
+        window.addEventListener("load", applyCapitalize);
+        window.addEventListener("resize", applyCapitalize);
+    </script>
+</html>
