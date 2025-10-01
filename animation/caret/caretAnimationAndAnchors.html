@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caret animation and anchors</title>
+    <link rel="stylesheet" href="caretAnimationAndAnchors.css">
+</head>
+
+<body>
+    <h1>Showing caret animations, shapes, and using anchors for tooltips.</h1>
+    <form>
+
+        <div>
+            <label for="bar">Caret shape as bar (which is the default)</label>
+            <input type="text" id="bar" class="caret-bar" placeholder="caret-shape: bar">
+            <div class="tooltip tooltip-bar">Tooltip above center</div>
+        </div>
+
+        <div>
+            <label for="underscore">Caret shape as underscore</label>
+            <input id="underscore" class="caret-underscore" placeholder="caret-shape: underscore">
+            <div class="tooltip tooltip-underscore">Tooltip below center</div>
+        </div>
+
+        <div>
+            <label for="block">Caret shape as block</label>
+            <input id="block" class="caret-block" placeholder="caret-shape: block">
+            <div class="tooltip tooltip-block">Tooltip right side</div>
+        </div>
+
+        <div>
+            <label for="manual">Caret with manual animation (not blinking).</label>
+            <input id="manual" class="caret-manual" placeholder="caret-animation: manual">
+            <div class="tooltip tooltip-manual">Tooltip top left corner</div>
+        </div>
+
+        <div>
+            <label for="myAnimatedCaret">Caret with my own animation.</label>
+            <input id="myAnimatedCaret" class="caret-my-animate" placeholder="caret-animation by me">
+            <div class="tooltip tooltip-myanimate">Tooltip positioned with calc() and percentage.</div>
+        </div>
+
+    </form>
+</body>
+
+</html>

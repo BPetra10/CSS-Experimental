@@ -1,0 +1,147 @@
+body {
+    background-color: bisque;
+}
+
+h1 {
+    color: darkblue;
+    text-align: center;
+}
+
+form {
+    display: grid;
+    gap: 1.5rem;
+    font-size: large;
+    width: fit-content;
+    padding: 1em;
+    margin: 1em auto;
+    background-color: gainsboro;
+    border-radius: 10px;
+    border: 2px solid darkblue;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    color: darkblue;
+}
+
+input {
+    width: 95%;
+    padding: 0.5rem 0.2rem;
+    font-size: 1rem;
+    display: block;
+    border-radius: 8px;
+    border: 2px solid blue;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    border: 2px solid crimson;
+    box-shadow: 0 0 8px rgba(220, 20, 60, 0.6);
+    outline: none;
+}
+
+.caret-bar {
+    caret-shape: bar;
+    caret-color: red;
+    caret-animation: auto;
+    anchor-name: --bar;
+}
+
+.caret-block {
+    caret-shape: block;
+    caret-color: darkblue;
+    anchor-name: --block;
+}
+
+.caret-underscore {
+    caret-shape: underscore;
+    caret-color: darkorange;
+    anchor-name: --underscore;
+}
+
+.caret-manual {
+    caret-shape: block;
+    caret-color: purple;
+    caret-animation: manual;
+    anchor-name: --manual;
+}
+
+.caret-my-animate {
+    caret-shape: block;
+    animation: myAnim 4s linear infinite;
+    caret-animation: manual;
+    anchor-name: --myAnimate;
+}
+
+@keyframes myAnim {
+
+    0%,
+    20% {
+        caret-color: red;
+    }
+
+    40% {
+        caret-color: orange;
+    }
+
+    60% {
+        caret-color: green;
+    }
+
+    80% {
+        caret-color: blue;
+    }
+
+    100% {
+        caret-color: purple;
+    }
+}
+
+.tooltip {
+    position: absolute;
+    background-color: darkslategrey;
+    color: white;
+    font-weight: bolder;
+    padding: 0.5em;
+    border-radius: 10px;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.tooltip-bar {
+    position-anchor: --bar;
+    position-area: top center;
+    margin-bottom: 5px;
+}
+
+.tooltip-underscore {
+    position-anchor: --underscore;
+    position-area: bottom center;
+    margin-top: 5px;
+}
+
+.tooltip-block {
+    position-anchor: --block;
+    position-area: right; 
+    margin-left:5px;
+}
+
+.tooltip-manual {
+    position-anchor: --manual;
+    position-area: top left;
+}
+
+.tooltip-myanimate {
+    position-anchor: --myAnimate;
+    top: anchor(--myAnimate 25%);
+    left: calc(anchor(right) + 10px);
+}
+
+input:hover+.tooltip {
+    opacity: 1;
+}
