@@ -1,0 +1,116 @@
+body{
+  background-color: blanchedalmond;
+}
+h1{
+  text-align: center;
+  color: darkblue;
+  padding: 5px 0px;
+  margin: 5px 0px;
+}
+
+ul {
+  display: flex;
+  gap: 4vw;
+  padding-left: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  width: 30%;
+  height: 80vh;
+  margin: 2em auto;
+  padding-top: 10px;
+  anchor-name: --carousel;
+
+  scroll-marker-group: before;
+}
+
+li {
+  list-style-type: none;
+  background-color: beige;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  text-align: center;
+  counter-increment: markerNum;
+}
+
+ul::scroll-button(*) {
+  border: 0;
+  background: none;
+  color: yellow;
+  font-size: 3em;
+  cursor: pointer;
+
+  position: absolute;
+  position-anchor: --carousel;
+  align-self: anchor-center;
+}
+
+ul::scroll-button(*):active {
+  translate: 2px 2px;
+}
+
+ul::scroll-button(*):hover {
+  color: rgb(243, 170, 12);
+}
+
+ul::scroll-button(*):disabled {
+  opacity: 0.5;
+  color: yellow;
+  cursor: unset;
+}
+
+ul::scroll-button(left) {
+  content: "\261A";
+  right: calc(anchor(left) - 50px);
+}
+
+ul::scroll-button(right) {
+  content: "\261B";
+  left: calc(anchor(right) - 50px);
+}
+
+li::scroll-marker {
+  content: counter(markerNum);
+  width: fit-content;
+  padding: 5px 10px;
+  color: black;
+  text-decoration: none;
+  border: 2px solid darkblue;
+  border-radius: 10px;
+  background-color: rgb(214, 212, 212);
+}
+
+li:first-child::scroll-marker {
+  content: "First";
+}
+
+li:last-child::scroll-marker {
+  content: "Last";
+}
+
+::scroll-marker:hover {
+  background-color: gray;
+}
+
+::scroll-marker:target-current {
+  background-color: yellow;
+  color: darkblue;
+  font-weight: bold;
+}
+
+ul::scroll-marker-group {
+  display: flex;
+  gap: 20px;
+
+  position: absolute;
+  position-anchor: --carousel;
+  bottom: anchor(top);
+  justify-self: anchor-center;
+}
+
+li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
