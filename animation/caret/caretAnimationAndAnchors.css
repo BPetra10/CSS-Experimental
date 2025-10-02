@@ -101,6 +101,7 @@ input:focus {
 }
 
 .tooltip {
+    display:none; /*Hide tooltip by default.*/
     position: absolute;
     background-color: darkslategrey;
     color: white;
@@ -111,6 +112,13 @@ input:focus {
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.4s ease;
+}
+
+/*If the browser supports positioning, then tooltip will show*/
+@supports (position-anchor: --x) {
+  .tooltip {
+    display: block;
+  }
 }
 
 .tooltip-bar {
