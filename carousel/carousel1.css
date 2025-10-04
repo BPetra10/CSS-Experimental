@@ -4,7 +4,7 @@ body{
 h1{
   text-align: center;
   color: darkblue;
-  padding: 5px 0px;
+  padding: 5px 0px 12px 0px;
   margin: 5px 0px;
 }
 
@@ -101,6 +101,7 @@ li:last-child::scroll-marker {
 ul::scroll-marker-group {
   display: flex;
   gap: 20px;
+  
 
   position: absolute;
   position-anchor: --carousel;
