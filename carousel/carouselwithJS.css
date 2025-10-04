@@ -1,0 +1,99 @@
+body {
+  background-color: blanchedalmond;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: darkblue;
+  padding: 5px 0;
+  margin: 5px 0;
+}
+
+.carousel {
+  position: relative;
+  width: 30%;
+  margin: 1em auto;
+  overflow: hidden;
+  background-color: beige;
+  border-radius: 10px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  height: 80vh;
+}
+
+.slides li {
+  flex: 0 0 100%;
+}
+
+.slides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  color: yellow;
+  font-size: 3em;
+  cursor: pointer;
+  z-index: 10;
+  user-select: none;
+}
+
+.nav:hover {
+  color: rgb(243, 170, 12);
+}
+
+.nav:active {
+  transform: translateY(-50%) translate(2px, 2px);
+}
+
+.nav.prev {
+  left: 3px;
+}
+
+.nav.next {
+  right: 3px;
+}
+
+.markers {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0px;
+  flex-wrap: wrap;
+}
+
+.marker {
+  padding: 5px 10px;
+  color: black;
+  border: 2px solid darkblue;
+  border-radius: 10px;
+  background-color: rgb(214, 212, 212);
+  cursor: pointer;
+  user-select: none;
+}
+
+.marker:hover {
+  background-color: gray;
+}
+
+.marker.active {
+  background-color: yellow;
+  color: darkblue;
+  font-weight: bold;
+}
