@@ -1,0 +1,100 @@
+body {
+    font-family: sans-serif;
+    background-color: lightblue;
+}
+
+h1 {
+    text-align: center;
+    color: darkblue;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 5px 10px 10px black;
+    border-radius: 50px;
+}
+
+.notch {
+    corner-shape: notch;
+    background-color: pink;
+}
+
+.square {
+    corner-shape: square;
+    background-color: blue;
+}
+
+.round {
+    corner-shape: round;
+    background-color: green;
+}
+
+.squircle {
+    corner-shape: squircle;
+    background-color: darkkhaki;
+}
+
+.bevel {
+    corner-shape: bevel;
+    background-color: tomato;
+}
+
+.scoop {
+    corner-shape: scoop;
+    background-color: purple;
+}
+
+.custom-se {
+    corner-shape: superellipse(4);
+    background-color: darkslategrey;
+}
+
+
+.mixed {
+    corner-shape: round superellipse(-1.6) notch bevel;
+    background-color: orange;
+}
+
+.rhombus {
+    background-color: burlywood;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    border-radius: 50%;
+    corner-shape: bevel;
+}
+
+.octagon {
+    background-color: darkred;
+    border-radius: calc(100% / (2 + sqrt(2)));
+    corner-shape: bevel;
+}
+
+.hexagon {
+    width: auto;
+    height: 200px;
+    background-color: goldenrod;
+    aspect-ratio: cos(30deg);
+    border-radius: 50% / 25%;
+    corner-shape: bevel;
+}
+
+.star {
+    background-color: rosybrown;
+    border-radius: 50%;
+    corner-shape: scoop;
+}

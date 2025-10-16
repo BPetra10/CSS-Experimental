@@ -1,0 +1,106 @@
+body {
+    font-family: sans-serif;
+    background-color: darkslategray;
+    color: white;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8em;
+}
+
+h1{
+    margin:10px 0 0 0;
+}
+
+.shape {
+    --TL: 10%;
+    --TR: 15%;
+    --BL: 20%;
+    --BR: 25%;
+    --corner-shape: round;
+    
+    margin: 0.8em auto;
+
+    position: relative;
+    width: 200px; 
+    height: 200px;
+    background-color: darkcyan;
+    border: 5px solid white;
+    
+    border-radius: var(--TL) var(--TR) var(--BR) var(--BL);
+    corner-shape: var(--corner-shape);
+    
+    transition: all 0.2s ease-out;
+}
+
+.contShape
+{
+    background: darkblue;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    padding: 1em;
+    width: fit-content;
+}
+
+.ranges {
+    display: flex; 
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.ranges > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px; 
+}
+
+input[type="range"] {
+    position: relative;
+    width: 80px; 
+    accent-color: gold;
+    height: 100px; 
+      writing-mode: vertical-lr;
+      direction: rtl;
+}
+
+.ranges label {
+    font-size: 0.8em;
+    text-align: center;
+    color: white;
+    height: auto; 
+    padding: 0;
+}
+
+label, select, .randomize {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.randomize {
+    cursor: pointer;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+
+.cssCode {
+    background-color: #333;
+    color: greenyellow; 
+    font-family: monospace;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+}

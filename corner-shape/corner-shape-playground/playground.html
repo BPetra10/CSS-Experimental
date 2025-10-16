@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corner-shape</title>
+    <link rel="stylesheet" href="playground.css">
+</head>
+
+<body>
+    <h1>Corner-shape demo:</h1>
+    <div class="contShape">
+        <div class="controls">
+            <div class="ranges">
+                <div>
+                    <input type="range" min="0" max="50" value="10" data-corner="TL">
+                    <label>Top left</label>
+                </div>
+
+                <div>
+                    <input type="range" min="0" max="50" value="20" data-corner="TR">
+                    <label>Top right</label>
+                </div>
+
+                <div>
+                    <input type="range" min="0" max="50" value="30" data-corner="BR">
+                    <label>Bottom right</label>
+                </div>
+
+                <div>
+                    <input type="range" min="0" max="50" value="40" data-corner="BL">
+                    <label>Bottom left</label>
+                </div>
+            </div>
+
+            <label for="corner-shape">Corner shape:</label>
+            <select id="corner-shape">
+                <option value="round">Round</option>
+                <option value="squircle">Squircle</option>
+                <option value="scoop">Scoop</option>
+                <option value="bevel">Bevel</option>
+                <option value="notch">Notch</option>
+                <option value="square">Square</option>
+                <option value="superellipse(-3)">Superellipse(-3)</option>
+            </select>
+
+            <button class="randomize">Randomize</button>
+        </div>
+        <div class="cssCode"></div>
+        <div class="shape"></div>
+    </div>
+
+    <script src="playground.js"></script>
+
+</body>
+
+</html>
