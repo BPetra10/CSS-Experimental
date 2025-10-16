@@ -1,0 +1,197 @@
+body {
+    margin: 0;
+    line-height: 1.6;
+    padding-bottom: 50px;
+    text-align: justify;
+    background-color: rgba(81, 155, 7, 0.548);
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+.content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+h1,
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: darkblue;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    animation: progress-bar-change linear, color-change linear;
+    animation-timeline: scroll(root block);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 10px;
+    width: 100%;
+    transform-origin: 0 0;
+    z-index: 2;
+}
+
+@keyframes progress-bar-change {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes color-change {
+    0% {
+        background-color: red;
+    }
+
+    25% {
+        background-color: orange
+    }
+
+    50% {
+        background-color: yellow;
+    }
+
+    75% {
+        background-color: yellowgreen;
+    }
+
+    100% {
+        background-color: green;
+    }
+}
+
+.ball {
+    width: 80px;
+    height: 80px;
+
+    background-image: url('img/football.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border-radius: 50%;
+
+    position: fixed;
+    left: 20px;
+    top: 0;
+    z-index: 1;
+
+    animation: bouncing-ball ease-out;
+    animation-timeline: scroll(root block);
+}
+
+@keyframes bouncing-ball {
+    0% {
+        transform: translateY(calc(50vh - 40px));
+    }
+
+    15% {
+        transform: translateY(calc(100vh - 80px));
+        animation-timing-function: cubic-bezier(0.6, -0.2, 0.7, 0.4);
+    }
+
+    30% {
+        transform: translateY(calc(100vh - 280px));
+        animation-timing-function: ease-out;
+    }
+
+    60% {
+        transform: translateY(calc(100vh - 80px));
+        animation-timing-function: cubic-bezier(0.6, -0.2, 0.7, 0.4);
+    }
+
+    80% {
+        transform: translateY(calc(100vh - 200px));
+        animation-timing-function: ease-out;
+    }
+
+    100% {
+        transform: translateY(calc(100vh - 80px));
+        opacity: 1;
+    }
+}
+
+.viewDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.3em auto;
+    width: 100%;
+}
+
+.viewAnimate {
+    display: block;
+    width: 50%;
+    max-width: 400px;
+    transform-origin: center center;
+
+    margin: 0 auto;
+
+    animation-name: reveal;
+    animation-timeline: view(y 2%);
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+body::before {
+    content: "Sticky header";
+    position: fixed;
+    top: 2%;
+    right: 0;
+    transform-origin: right top;
+    background: #004466;
+    color: white;
+    padding: 10px 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 0.5em 0 0 0.5em;
+    z-index: 4;
+
+    animation: header-change linear, header-color-change linear;
+    animation-timeline: scroll(root block);
+}
+
+@keyframes header-change {
+
+    10%,
+    60% {
+        content: "Progress bar and bouncing ball";
+    }
+
+    61%,
+    100% {
+        content: "Image animation with view()";
+    }
+}
+
+@keyframes header-color-change {
+    0% {
+        background-color: brown;
+    }
+
+    50% {
+        background-color: burlywood;
+    }
+
+    100% {
+        background-color: cadetblue;
+    }
+}
