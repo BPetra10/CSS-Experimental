@@ -1,0 +1,132 @@
+body {
+    background-color: bisque;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.form-style {
+    background-color: lavender;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    width: 30%;
+}
+
+h2{
+    text-align: center;
+    color: darkblue;
+    margin: 10px 0px;
+}
+
+.form-style>h2{
+    text-align: center;
+    margin: 10px 0 20px 0;
+    color: darkblue;
+    font-variant: small-caps;
+    font-size: xx-large;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: lightblue;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black;
+}
+
+select {
+    width: 50%;
+    background-color: lightgoldenrodyellow;
+}
+
+input[type="text"],
+select {
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    width: 80%;
+    display: block;
+    margin: 10px auto;
+    background-color: rgb(78, 78, 237);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: darkblue;
+}
+
+option:hover {
+    background-color: cornsilk;
+}
+
+option:checked {
+    font-weight: bold;
+}
+
+input[type="text"] {
+    field-sizing: content;
+    min-width: 40%;
+    max-width: 100%;
+}
+
+textarea {
+    field-sizing: content;
+    min-width: 40%;
+    min-height: 100px;
+    max-width: 100%;
+}
+
+select,
+::picker(select) {
+    appearance: base-select;
+}
+
+::picker(select) {
+    border: 2px solid darkblue;
+    border-radius: 0 0 10px 10px;
+    background-color: lightgoldenrodyellow;
+}
+
+select::picker-icon {
+    color: darkblue;
+    margin-right: 5px;
+    transition: 0.5s rotate, 0.5s transform;
+
+    transform: scale(1);
+}
+
+select:open::picker-icon {
+    rotate: 180deg;
+    transform: scale(1.3);
+    color: crimson;
+    margin-right: 5px;
+}
+
+option::checkmark {
+    order: 1;
+    margin-left: auto;
+    content: "\2705";
+}
