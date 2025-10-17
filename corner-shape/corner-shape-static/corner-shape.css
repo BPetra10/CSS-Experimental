@@ -98,3 +98,26 @@ h1 {
     border-radius: 50%;
     corner-shape: scoop;
 }
+
+.triangle {
+    background-color: chocolate;
+    corner-shape: bevel;
+    border-radius: 50%/100% 100% 0 0;
+    aspect-ratio: 1/cos(30deg);
+}
+
+.triangle2 {
+    background-color: darkslateblue;
+    corner-shape: bevel;
+    border-radius: 0 100% 0 0;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+
+.parallelogram {
+    background-color: mediumaquamarine;
+    height: 150px;
+    width: 200px;
+    corner-shape: bevel;
+    border-radius: 50px / 100% 100% 0 0;
+}
