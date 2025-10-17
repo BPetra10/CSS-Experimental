@@ -67,7 +67,15 @@ h1 {
 
 .mixed {
     corner-shape: round superellipse(-1.6) notch bevel;
-    background-color: orange;
+    background-image: url(forest.jpg);
+    outline: dashed red;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.mixed > p{
+    backdrop-filter: invert(80%);
+    font-size: large;
 }
 
 .rhombus {
