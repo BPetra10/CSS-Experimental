@@ -1,0 +1,104 @@
+@import "https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap";
+
+body {
+    background-color: beige;
+}
+
+h1,
+h3 {
+    text-align: center;
+    color: darkblue;
+}
+
+p {
+    font-family: "Bungee Spice", fantasy;
+    font-size: 2rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+@font-palette-values --red-bungee {
+    font-family: "Bungee Spice";
+    base-palette: 0;
+}
+
+@font-palette-values --blue-bungee {
+    font-family: "Bungee Spice";
+    base-palette: 1;
+}
+
+@font-palette-values --my-bungee {
+    font-family: "Bungee Spice";
+    override-colors:
+        0 pink,
+        1 green;
+}
+
+.colPal1 {
+    font-palette: --red-bungee;
+}
+
+.colPal2 {
+    font-palette: --blue-bungee;
+}
+
+.myColPal {
+    font-palette: --my-bungee;
+}
+
+@keyframes mix-lch {
+    0% {
+        font-palette: --red-bungee;
+    }
+
+    62.5% {
+        font-palette: palette-mix(in lch, --red-bungee 65%, --blue-bungee 35%);
+    }
+
+    100% {
+        font-palette: palette-mix(in lch, --red-bungee 65%, --blue-bungee 35%);
+    }
+}
+
+@keyframes mix-srgb {
+    0% {
+        font-palette: --red-bungee;
+    }
+
+    62.5% {
+        font-palette: palette-mix(in srgb, --red-bungee, --my-bungee);
+    }
+
+    100% {
+        font-palette: palette-mix(in srgb, --red-bungee, --my-bungee);
+    }
+}
+
+@keyframes mix-hsl {
+    0% {
+        font-palette: --blue-bungee;
+    }
+
+    62.5% {
+        font-palette: palette-mix(in hsl shorter hue, --blue-bungee, --my-bungee);
+    }
+
+    100% {
+        font-palette: palette-mix(in hsl shorter hue, --blue-bungee, --my-bungee);
+    }
+}
+
+.mixed1 {
+    font-palette: --red-bungee;
+    animation: mix-lch 6s infinite alternate ease-in-out;
+}
+
+.mixed2 {
+    font-palette: --red-bungee;
+    animation: mix-srgb 6s infinite alternate ease-in-out;
+}
+
+.mixed3 {
+    font-palette: --blue-bungee;
+    animation: mix-hsl 6s infinite alternate ease-in-out;
+}
