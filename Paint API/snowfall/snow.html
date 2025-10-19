@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowing - Paint API</title>
+    <link rel="stylesheet" href="snow.css">
+</head>
+<body>
+    <h1>Snowing using Paint API</h1>
+</body>
+<script>
+    if ('paintWorklet' in CSS) {
+      CSS.paintWorklet.addModule('snow.js');
+    }else{
+        alert("paint API is not supported!");
+    }
+</script>
+</html>

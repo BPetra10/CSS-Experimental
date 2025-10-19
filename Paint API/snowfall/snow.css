@@ -1,0 +1,26 @@
+html, body{
+    margin:0;
+    height: 100%;
+    background-color: rgb(54, 54, 101);
+    background-image: paint(snowfall);
+    animation: snowing 20s linear infinite;
+    overflow: hidden;
+}
+
+h1{
+    text-align: center;
+    color: white;
+    text-shadow: 5px 5px 10px whitesmoke;
+    margin-top: 40vh;
+}
+
+@property --time {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 0;
+}
+
+@keyframes snowing{
+    from {--time:0}
+    to {--time: 500}
+}

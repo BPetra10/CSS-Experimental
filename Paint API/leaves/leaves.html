@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaves - Paint API</title>
+  <link rel="stylesheet" href="leaves.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Autumn leaves using Paint API</h1>
+  </div>
+
+  <script>
+    if ('paintWorklet' in CSS) {
+      CSS.paintWorklet.addModule('leaves.js');
+    } else {
+      alert("paint API is not supported!");
+    }
+  </script>
+</body>
+</html>
