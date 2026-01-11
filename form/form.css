@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    min-height: 90vh;
 }
 
 .form-style {
@@ -14,7 +14,7 @@ body {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-    width: 30%;
+    width: min(90%, 28rem);
 }
 
 h2{

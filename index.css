@@ -21,6 +21,11 @@ nav {
     align-items: stretch;
 }
 
+nav > * {
+  max-width: 32ch;
+  justify-self: center;
+}
+
 a.card {
     display: flex;
     flex-direction: column;
