@@ -1,0 +1,86 @@
+@view-transition {
+  navigation: auto;
+  types: fade;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+main {
+  text-align: center;
+  padding: 2rem;
+  border: 2px solid gainsboro;
+  border-radius: 0.5em;
+  backdrop-filter: blur(4px);
+}
+
+body.home {
+  background-image: url(snowy-mountain.jpg);
+}
+
+body.about {
+  background-image: url(misty-forest.jpg);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5em;
+  background-color: darkslateblue;
+  color: white;
+  text-decoration: none;
+}
+
+.bigger{
+    font-size: x-large;
+}
+
+html:active-view-transition-type(fade)::view-transition-old(root) {
+  animation: fade-out 700ms ease-in-out both;
+}
+
+html:active-view-transition-type(fade)::view-transition-new(root) {
+  animation: fade-in 700ms ease-in-out both;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+html:active-view-transition-type(fade)::view-transition-old(title) {
+  animation: title-out 300ms ease-in both;
+}
+
+html:active-view-transition-type(fade)::view-transition-new(title) {
+  animation: title-in 400ms ease-out both;
+}
+
+@keyframes title-out {
+  to {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+}
+
+@keyframes title-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}

@@ -16,14 +16,10 @@ nav {
     width: 100%;
     max-width: clamp(60ch, 90vw, 110ch);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(24ch, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 32ch));
+    justify-content: center;
     gap: 1.25rem;
     align-items: stretch;
-}
-
-nav > * {
-  max-width: 32ch;
-  justify-self: center;
 }
 
 a.card {
