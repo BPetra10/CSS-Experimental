@@ -22,14 +22,15 @@ p {
 }
 
 .normal::first-letter {
-    initial-letter: normal;
-    -webkit-initial-letter: normal;
     /*For Safari and Webview, we have to use vendor prefixes.*/
+    -webkit-initial-letter: normal;
+    initial-letter: normal;
     color: red;
     font-weight: bold;
 }
 
 .fourLines::first-letter {
+    -webkit-initial-letter: 4;
     initial-letter: 4;
     /*
     These 3 example will give back the same result as the initial-letter: 4
@@ -37,24 +38,24 @@ p {
         initial-letter: 4 drop;
         initial-letter: drop 4;
     */
-    -webkit-initial-letter: 4;
 }
 
 .raised::first-letter {
+    -webkit-initial-letter: 4;
     initial-letter: 4 1;
     /*Same: 
     initial-letter: 4 raise;
     initial-letter: raise 4;
     */
-    -webkit-initial-letter: 4;
 }
 
 .sunken::first-letter {
-    initial-letter: 4 2;
     -webkit-initial-letter: 4 2;
+    initial-letter: 4 2;
 }
 
 .notInt::first-letter {
+    -webkit-initial-letter: 3.51 4;
     initial-letter: 3.51 4;
 }
 
