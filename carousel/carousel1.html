@@ -1,24 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carousel</title>
-    <link rel="stylesheet" href="carousel1.css">
-</head>
-<body>
-<h1>Carousel with button and marker group</h1>
 
-<ul>
-  <li><img src="img/car1.jpg"></li>
-  <li><img src="img/car2.jpg"></li>
-  <li><img src="img/car3.jpg"></li>
-  <li><img src="img/car4.jpg"></li>
-  <li><img src="img/car5.jpg"></li>
-  <li><img src="img/car6.jpg"></li>
-  <li><img src="img/car7.jpg"></li>
-  <li><img src="img/car8.jpg"></li>
-</ul>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel</title>
+  <link rel="stylesheet" href="carousel1.css">
+</head>
+
+<body>
+  <h2>Carousel with button and marker group</h2>
+  <h5>Mini Game - Try to find the &#128038; in one of the pictures as fast as you can!</h5>
+  <ul>
+    <li><img src="img/car1.jpg"></li>
+    <li><img src="img/car2.jpg"></li>
+    <li><img src="img/car3.jpg"></li>
+    <li><img src="img/car4.jpg"></li>
+    <li><img src="img/car5.jpg"></li>
+    <li><img src="img/car6.jpg"></li>
+    <li><img src="img/car7.jpg"></li>
+    <li><img src="img/car8.jpg"></li>
+  </ul>
+
+  <script>
+    const slides = document.querySelectorAll('li');
+
+    const randomSlide = slides[Math.floor(Math.random() * slides.length)];
+
+    const emoji = document.createElement('div');
+    emoji.className = 'emoji';
+    emoji.textContent = '🐦';
+
+    const x = Math.random() * 80 + 10;
+    const y = Math.random() * 80 + 10;
+
+    emoji.style.left = x + '%';
+    emoji.style.top = y + '%';
+
+    randomSlide.appendChild(emoji);
+
+    const start = Date.now();
+
+    emoji.addEventListener('click', () => {
+      const time = ((Date.now() - start) / 1000).toFixed(2);
+      alert(`You found the bird in: ${time} second!`);
+      emoji.remove();
+    });
+  </script>
 
 </body>
+
 </html>

@@ -1,22 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palette-mix</title>
     <link rel="stylesheet" href="palette-mix.css">
 </head>
+
 <body>
     <h1>Using palette-mix() to blend two palettes</h1>
 
     <p class="colPal1">Color Palette 1</p>
     <p class="colPal2">Color Palette 2</p>
+
+    <div class="controls">
+        <label for="col1">First color:</label>
+        <input type="color" id="col1" value="#ff69b4">
+
+        <label for="col2">Second color:</label>
+        <input type="color" id="col2" value="#008000">
+
+    </div>
+
     <p class="myColPal">My Color Palette</p>
 
     <h3>Animating the mixing of the palettes:</h3>
-    <p class="mixed1">Mixed 1 and 2 (LCH)</p> 
+    <p class="mixed1">Mixed 1 and 2 (LCH)</p>
     <p class="mixed2">Mixed 1 and my palette (SRGB)</p>
     <p class="mixed3">Mixed 2 and my palette (HSL)</p>
+    <script>
+        const c1 = document.getElementById('col1');
+        const c2 = document.getElementById('col2');
+
+        let styleTag = document.createElement('style');
+        document.head.appendChild(styleTag);
+
+        function updatePalette() {
+            styleTag.innerHTML = `
+    @font-palette-values --my-bungee {
+        font-family: "Bungee Spice";
+        override-colors:
+            0 ${c1.value},
+            1 ${c2.value};
+    }`;
+        }
+
+        c1.addEventListener('input', updatePalette);
+        c2.addEventListener('input', updatePalette);
+
+        updatePalette();
+    </script>
+
 
 </body>
+
 </html>

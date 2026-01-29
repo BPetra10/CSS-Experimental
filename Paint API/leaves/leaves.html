@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Leaves - Paint API</title>
   <link rel="stylesheet" href="leaves.css">
 </head>
+
 <body>
   <div class="card">
     <h1>Autumn leaves using Paint API</h1>
+
+    <div class="controls">
+      <label for="leavesSlider">Leaves density:</label>
+      <input type="range" id="leavesSlider" min="50" max="200" step="1" value="120">
+
+      <label for="rotateSlider">Rotate:</label>
+      <input type="range" id="rotateSlider" min="1" max="50" value="1">
+
+    </div>
+
   </div>
 
   <script>
@@ -17,6 +29,20 @@
     } else {
       alert("paint API is not supported!");
     }
+
+    const leavesSlider = document.getElementById('leavesSlider');
+    const rotateSlider = document.getElementById('rotateSlider');
+    const body = document.body;
+
+    leavesSlider.addEventListener('input', () => {
+      body.style.setProperty('--leavesCount', leavesSlider.value);
+    });
+
+    rotateSlider.addEventListener('input', () => {
+      body.style.setProperty('--rotate', rotateSlider.value);
+    });
+
   </script>
 </body>
+
 </html>

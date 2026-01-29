@@ -2,7 +2,7 @@ body {
     background-color: bisque;
 }
 
-h1 {
+h1, h3, p {
     color: darkblue;
     text-align: center;
 }
@@ -101,7 +101,8 @@ input:focus {
 }
 
 .tooltip {
-    display:none; /*Hide tooltip by default.*/
+    display: none;
+    /*Hide tooltip by default.*/
     position: absolute;
     background-color: darkslategrey;
     color: white;
@@ -116,9 +117,9 @@ input:focus {
 
 /*If the browser supports positioning, then tooltip will show*/
 @supports (position-anchor: --x) {
-  .tooltip {
-    display: block;
-  }
+    .tooltip {
+        display: block;
+    }
 }
 
 .tooltip-bar {
@@ -135,8 +136,8 @@ input:focus {
 
 .tooltip-block {
     position-anchor: --block;
-    position-area: right; 
-    margin-left:5px;
+    position-area: right;
+    margin-left: 5px;
 }
 
 .tooltip-manual {
@@ -151,5 +152,38 @@ input:focus {
 }
 
 input:hover+.tooltip {
+    opacity: 1;
+}
+
+#player {
+    position: fixed;
+    left: 40px;
+    top: 40px;
+    font-size: 2rem;
+    z-index: 1;
+    transition: opacity 1s ease;
+}
+
+.player-fade {
+    opacity: 0;
+}
+
+#house {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    font-size: 4rem;
+    display: none;
+    anchor-name: --house;
+}
+
+#successTooltip {
+    position: fixed;
+    position-anchor: --house;
+    position-area: left center;
+    margin-right: 10px;
+}
+
+#successTooltip.show {
     opacity: 1;
 }

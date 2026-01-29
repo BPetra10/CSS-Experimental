@@ -17,6 +17,15 @@ p {
     cursor: pointer;
 }
 
+.controls{
+    display:flex;
+    gap:2rem;
+    justify-content:center;
+    margin:1.5rem 0;
+    font-size:1.2rem;
+}
+
+
 @font-palette-values --red-bungee {
     font-family: "Bungee Spice";
     base-palette: 0;
@@ -25,13 +34,6 @@ p {
 @font-palette-values --blue-bungee {
     font-family: "Bungee Spice";
     base-palette: 1;
-}
-
-@font-palette-values --my-bungee {
-    font-family: "Bungee Spice";
-    override-colors:
-        0 pink,
-        1 green;
 }
 
 .colPal1 {
@@ -102,3 +104,4 @@ p {
     font-palette: --blue-bungee;
     animation: mix-hsl 6s infinite alternate ease-in-out;
 }
+

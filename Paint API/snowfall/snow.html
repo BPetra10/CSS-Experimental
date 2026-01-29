@@ -1,19 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snowing - Paint API</title>
     <link rel="stylesheet" href="snow.css">
 </head>
+
 <body>
-    <h1>Snowing using Paint API</h1>
+    <div class="card">
+        <h1>Snowing using Paint API</h1>
+
+        <div class="controls">
+
+            <label for="snowSlider"> Snow count</label>
+            <input type="range" id="snowSlider" min="100" max="400" step="1" value="150">
+
+            <label for="windForce">Wind force</label>
+            <input type="range" id="windForce" min="0" max="5" step="0.1" value="0.5">
+
+            <label for="fallSpeedSlider"> Fall speed </label>
+            <input type="range" id="fallSpeedSlider" min="0.5" max="5" step="0.1" value="1.2">
+
+            <label for="swaySlider">Sway</label>
+            <input type="range" id="swaySlider" min="0" max="40" value="20">
+
+        </div>
+    </div>
 </body>
+
 <script>
     if ('paintWorklet' in CSS) {
-      CSS.paintWorklet.addModule('snow.js');
-    }else{
+        CSS.paintWorklet.addModule('snow.js');
+    } else {
         alert("paint API is not supported!");
     }
+
+    const snowSlider = document.getElementById('snowSlider');
+    const wind = document.getElementById('windForce');
+    const fall = document.getElementById('fallSpeedSlider');
+    const swaySlider = document.getElementById('swaySlider');
+    
+    const body = document.body;
+
+    snowSlider.addEventListener('input', () => {
+      body.style.setProperty('--snowCount', snowSlider.value);
+    });
+
+    wind.addEventListener('input', () => {
+      body.style.setProperty('--windForce', wind.value);
+    });
+
+    fall.addEventListener('input', () => {
+      body.style.setProperty('--fallSpeed', fall.value);
+    });
+
+    swaySlider.addEventListener('input', () => {
+      body.style.setProperty('--sway', swaySlider.value);
+    });
 </script>
+
 </html>

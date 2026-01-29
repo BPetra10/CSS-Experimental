@@ -1,10 +1,13 @@
-body {
-  background: paint(leaves-bg);
+html, body {
+  margin: 0;
   min-height: 100vh;
+  background-image: paint(leaves-bg);
+}
+
+body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0;
 }
 
 .card {
@@ -15,4 +18,16 @@ body {
   color: darkolivegreen;
   text-align: center;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+@property --leavesCount {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 120;
+}
+
+@property --rotate {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 1;
 }

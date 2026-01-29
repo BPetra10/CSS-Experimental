@@ -1,5 +1,9 @@
 class LeavesBackground {
-  paint(ctx, size) {
+    static get inputProperties() {
+    return ['--leavesCount', '--rotate'];
+  }
+
+  paint(ctx, size, props) {
     const { width, height } = size;
 
     ctx.fillStyle = "beige";
@@ -11,7 +15,9 @@ class LeavesBackground {
       [15, -10], [-20, 5], [10, 20], [-25, -15], [5, 10]
     ];
 
-    const leavesSpacing = 120;
+    const rotate = parseFloat(props.get('--rotate')) || 0;
+
+    const leavesSpacing = parseInt(props.get('--leavesCount')) || 120;
     const cols = Math.ceil(width / leavesSpacing);
     const rows = Math.ceil(height / leavesSpacing);
 
@@ -32,7 +38,8 @@ class LeavesBackground {
         colorIndex++;
 
         const size = 30 + ((row + col) % 3) * 10;
-        const angle = Math.sin(row * 1.3 + col * 0.7) * 1.2;
+        const baseAngle = Math.sin(row * 1.3 + col * 0.7) * 1.2;
+        const angle = baseAngle + rotate * 0.02 * (row + col);
 
         this.drawLeaf(ctx, x, y, size, color, angle);
       }

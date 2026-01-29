@@ -5,19 +5,19 @@ function rand(seed) {
 
 class Snowfall {
   static get inputProperties() {
-    return ['--time'];
+    return ['--time', '--snowCount', '--windForce', '--fallSpeed', '--sway'];
   }
 
   paint(ctx, size, props) {
     const t = parseFloat(props.get('--time')) || 0;
     const { width, height } = size;
 
-    const SNOW_COUNT = 150;
+    const SNOW_COUNT = parseInt(props.get('--snowCount')) || 150;
     const MIN_R = 2;
     const MAX_R = 5;
-    const FALL_SPEED = 1.2;
-    const SWAY = 20;
-    const WIND_SPEED = 0.5;
+    const FALL_SPEED = parseFloat(props.get('--fallSpeed')) || 1.2;
+    const SWAY = parseFloat(props.get('--sway')) || 20;
+    const WIND_DIR = parseFloat(props.get('--windForce')) || 0.5;
 
     ctx.clearRect(0, 0, width, height);
 
@@ -28,7 +28,7 @@ class Snowfall {
 
       const startHeight = rand(i * 3);
 
-      const x = (startX + Math.sin(t * 0.05 + i) * SWAY + t * WIND_SPEED) % width;
+      const x = (startX + Math.sin(t * 0.05 + i) * SWAY + t * WIND_DIR) % width;
       const y = (t * FALL_SPEED + startHeight * height) % height;
 
       ctx.fillStyle = `rgba(255, 255, 255, 0.5)`;
