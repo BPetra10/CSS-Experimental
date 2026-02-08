@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Mine</title>
+  <link rel="stylesheet" href="mine.css">
+</head>
+
+<body class="locked">
+
+  <div class="mine">
+    <div class="rockKeySpace"></div>
+    <div class="prize"></div>
+    <div class="shaft">
+      <div class="intro question">
+        <p class="story">
+          Hello <span class="miner">Miner</span>! Your aim is to get the key for the lock,
+          while you are going lower and lower in the mine.
+          <span class="highlight"> But be careful!</span> You have to avoid the obstacles.
+          <br><br>
+          The first problem you encounter is that you can't even get into the mine because the entrance is blocked by a
+          stone.
+          To open it, you have to solve this:
+          <br>
+          <strong class="mixText">Which two colors will make a gold one?</strong>
+        </p>
+
+        <div class="mixers">
+          <input type="color" class="color1">
+          <input type="color" class="color2">
+          <button class="checkMixBtn checkBtn">Check mix</button>
+        </div>
+      </div>
+
+      <div class="player"></div>
+      <div class="gateRock"></div>
+
+      <div class="riddlePanel question">
+        <div class="riddle">
+          <p class="story">
+            Taken from a mine and cased in wood,
+            I’m never set free, though used as I should.
+            I’m not burned for heat nor worn with pride,
+            Yet I <span class="highlight">leave my mark</span> where thoughts reside.
+            What am I?
+          </p>
+
+          <div class="answerDiv">
+            <input type="text" class="riddleInput caretRiddle" id="riddleInput" placeholder="Your answer...">
+            <button class="checkAnswer checkBtn">Check Answer</button>
+          </div>
+        </div>
+
+        <ul class="carousel">
+          <li><img src="img/ans1.jpg"></li>
+          <li><img src="img/ans2.jpg"></li>
+          <li><img src="img/ans3.jpg"></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+
+  <script>
+    history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+
+    if ('paintWorklet' in CSS) {
+      CSS.paintWorklet.addModule('mineWall.js');
+    }
+  </script>
+
+</body>
+
+</html>

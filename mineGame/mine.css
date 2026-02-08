@@ -1,0 +1,503 @@
+@import "https://fonts.googleapis.com/css2?family=Honk:MORF@15&display=swap";
+
+body {
+  margin: 0;
+  height: 400vh;
+  overflow-x: hidden;
+
+  --ov: if(style(--scroll: locked): hidden; else: auto);
+  overflow: var(--ov);
+}
+
+@property --depth {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+/* PLAYER */
+.player {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  translate: -50% 0;
+  font-size: 4rem;
+  z-index: 20;
+
+  view-transition-name: player;
+}
+
+::view-transition-old(player) {
+  animation: player-out 300ms ease forwards;
+}
+
+::view-transition-new(player) {
+  animation: player-in 300ms ease forwards;
+}
+
+@keyframes player-out {
+  to {
+    opacity: 0;
+    transform: scale(0.6) rotate(-20deg);
+  }
+}
+
+@keyframes player-in {
+  from {
+    opacity: 0;
+    transform: scale(1.6) rotate(20deg);
+  }
+}
+
+.player::before {
+  --pcont: if(style(--mood: sad): "\1F62D";
+      else: if(style(--player: hasKey): "\1F600 \1F5DD\FE0F";
+      else: if(style(--answer: good):"\1F600\1F4B0"; else:"\1F600")));
+  content: var(--pcont);
+}
+
+
+/* SCROLL */
+.mine {
+  position: relative;
+  height: 400vh;
+}
+
+/* PAINT */
+.shaft {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 1;
+
+  background: paint(mine-wall);
+
+  animation: descend linear forwards;
+
+  animation-timeline: scroll(root block);
+}
+
+@keyframes descend {
+  from {
+    --depth: 0;
+  }
+
+  to {
+    --depth: 1000;
+  }
+}
+
+/* OBSTACLE AND KEY */
+.rockKeySpace {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 400vh;
+  width: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.rock {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle at 30% 30%, #422b1e, #24160f);
+  box-shadow:
+    inset -6px -6px 12px rgba(0, 0, 0, 0.4),
+    inset 10px 10px 10px rgba(95, 95, 95, 0.2);
+  opacity: 0.95;
+}
+
+.key {
+  position: absolute;
+  font-size: 3rem;
+  z-index: 12;
+}
+
+
+/* INTRO AND RIDDLE JOINT STYLE */
+.question {
+  margin: 0 auto;
+  padding: 5px 20px;
+  font-size: x-large;
+  text-align: justify;
+  width: 50%;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.6);
+  border-radius: 20px;
+}
+
+.story {
+  margin: 10px;
+}
+
+.story::first-letter {
+  -webkit-initial-letter: 3;
+  initial-letter: 3;
+  color: rgba(231, 7, 52);
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+/* PALETTES FOR INTRO AND RIDDLE */
+@font-palette-values --palette1 {
+  font-family: "Honk";
+  base-palette: 4;
+}
+
+.miner {
+  font-family: "Honk", sans-serif;
+  font-palette: --palette1;
+}
+
+@font-palette-values --palette2 {
+  font-family: "Honk";
+  base-palette: 4;
+  override-colors:
+    1 red,
+    6 red;
+}
+
+.highlight {
+  font-family: "Honk", sans-serif;
+  font-palette: --palette2;
+}
+
+/* INTRO */
+.intro {
+  view-transition-name: intro;
+}
+
+::view-transition-old(intro) {
+  animation: intro-out 1000ms ease forwards;
+}
+
+@keyframes intro-out {
+  to {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+
+/* COLOR MIXING FOR INTRO */
+.mixers {
+  display: flex;
+  justify-content: center;
+  gap: 4em;
+}
+
+.mixText {
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+
+  --shake: if(style(--mix: wrong): shake 300ms; else: none);
+  animation: var(--shake);
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-6px);
+  }
+
+  50% {
+    transform: translateX(6px);
+  }
+
+  75% {
+    transform: translateX(-6px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.checkBtn {
+  border-radius: 5px;
+  background-color: bisque;
+}
+
+.checkBtn:hover {
+  box-shadow: 4px 4px 10px rgba(244, 4, 4, 0.463);
+}
+
+/* A ROCK BLOCK IN INTRO WITH TOOLTIP */
+.gateRock {
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at 30% 30%, #6e6e6e, #100a07);
+  border-radius: 28% 22% 43% 45%;
+  corner-shape: bevel;
+
+  z-index: 15;
+  view-transition-name: gateRock;
+
+  anchor-name: --gate;
+}
+
+::view-transition-old(gateRock) {
+  animation: rock-out 1000ms ease-in forwards;
+}
+
+@keyframes rock-out {
+  to {
+    transform: translateX(400px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.gateTooltip {
+  position: absolute;
+
+  position-anchor: --gate;
+
+  left: anchor(right);
+  top: anchor(center);
+
+  translate: 10px -70%;
+
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 5px;
+
+  --vis: if(style(--gateT: blocked): 1; else: 0);
+  opacity: var(--vis);
+
+  transition: opacity 200ms ease;
+
+  z-index: 30;
+}
+
+/* RIDDLE */
+.riddlePanel {
+  view-transition-name: riddle;
+
+  --vis: if(style(--lock: open): 1; else: 0);
+  opacity: var(--vis);
+  pointer-events: var(--vis);
+
+  display: flex;
+  flex-direction: row;
+}
+
+::view-transition-new(riddle) {
+  animation: riddle-slide-in 1000ms ease forwards;
+}
+
+@keyframes riddle-slide-in {
+  from {
+    transform: translateX(-120vw);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.riddle {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.answerDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+/* RIDDLE INPUT CARET ANIMATON */
+.riddleInput {
+  align-self: center;
+  caret-shape: block;
+  caret-animation: manual;
+
+  --shake: if(style(--answer: wrongInput): shake 300ms;
+      else: if(style(--answer: wrongBoth): shake 300ms;
+        else: none));
+
+  animation: colorShift 6s infinite ease-in-out, var(--shake);
+}
+
+@keyframes colorShift {
+  0% {
+    caret-color: red;
+  }
+
+  33% {
+    caret-color: blue;
+  }
+
+  66% {
+    caret-color: transparent;
+  }
+
+  100% {
+    caret-color: red;
+  }
+}
+
+/* THE PRIZE AT THE END */
+.prize {
+  position: absolute;
+  top: calc(400vh - 60vh);
+
+  left: 50%;
+  translate: -50% 0;
+  font-size: 4rem;
+  z-index: 15;
+}
+
+.prize::before {
+  --cont: if(style(--lock: open): "\1F513\1F4B0"; else: "\1F512\1F4B0");
+  content: var(--cont);
+}
+
+/* CAROUSEL */
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+  padding-left: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scroll-snap-type: y mandatory;
+
+  width: 40%;
+  height: 30vh;
+  margin: 0em auto;
+
+  anchor-name: --carousel;
+  scroll-marker-group: after;
+
+  --shake: if(style(--answer: wrongImage): shake 300ms;
+      else: if(style(--answer: wrongBoth): shake 300ms;
+        else: none));
+  animation: var(--shake);
+}
+
+li {
+  list-style-type: none;
+  flex: 0 0 100%;
+  height: 30vh;
+  scroll-snap-align: start;
+}
+
+li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel::scroll-button(*) {
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  position-anchor: --carousel;
+  justify-self: anchor-center;
+}
+
+.carousel::scroll-button(up) {
+  content: "\261D";
+  bottom: calc(anchor(top) - 45px);
+}
+
+.carousel::scroll-button(down) {
+  content: "\1F447";
+  top: calc(anchor(bottom) - 50px);
+}
+
+.carousel::scroll-button(*):active {
+  translate: 2px 2px;
+}
+
+.carousel::scroll-button(*):disabled {
+  opacity: 0.7;
+  cursor: unset;
+}
+
+.carousel::scroll-marker-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  position: fixed;
+  position-anchor: --carousel;
+
+  left: calc(anchor(right) + 10px);
+  align-self: anchor-center;
+}
+
+li::scroll-marker {
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: 2px solid red;
+  border-radius: 50%;
+  content: "";
+}
+
+li::scroll-marker:target-current {
+  background-color: white;
+}
+
+/* STYLE FOR CHANGING SITES */
+.leaveMine {
+  opacity: 0;
+  pointer-events: none;
+
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  translate: -50% -50%;
+  font-size: 2rem;
+  text-decoration: none;
+  background-color: bisque;
+
+  padding: 15px 30px;
+  border-radius: 12px;
+}
+
+/* TRANSITION BETWEEN PAGES */
+@view-transition {
+  navigation: auto;
+  types: lift;
+}
+
+html:active-view-transition-type(lift)::view-transition-old(root) {
+  animation: lift-out 800ms ease-in-out both;
+}
+
+html:active-view-transition-type(lift)::view-transition-new(root) {
+  animation: lift-in 800ms ease-in-out both;
+}
+
+@keyframes lift-out {
+  to {
+    transform: translateY(-100vh);
+    opacity: 0.2;
+  }
+}
+
+@keyframes lift-in {
+  from {
+    transform: translateY(100vh);
+    opacity: 0.2;
+  }
+}
+
+
+
