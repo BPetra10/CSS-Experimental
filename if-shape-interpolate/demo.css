@@ -85,9 +85,6 @@ h1 {
     object-fit: cover;
     display: block;
     transition: clip-path 0.8s ease;
-}
-
-.square {
     clip-path:
         shape(from 10% 10%,
             hline to 90%,
